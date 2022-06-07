@@ -98,6 +98,7 @@ namespace _24ayaRabota
                 startBTN.IsEnabled = true;
 
                 MessageBox.Show("Victory");
+                LevelTB.Focus();
                 timer.Stop();
             }
             else
@@ -111,6 +112,7 @@ namespace _24ayaRabota
                     startBTN.IsEnabled = true;
 
                     MessageBox.Show("You Lose");
+                    LevelTB.Focus();
                     timer.Stop();
                 }
             }
@@ -126,7 +128,7 @@ namespace _24ayaRabota
             }
             catch (Exception)
             {
-                MessageBox.Show("Некорректный номер уровня! (1-3) \n Будет запущен 1 уровень.");
+                MessageBox.Show("Некорректный номер уровня! (1-3)");
                 return;
             }
 
@@ -155,9 +157,6 @@ namespace _24ayaRabota
 
             switch (level)
             {
-                case 0:
-                    break;
-
                 case 1: //первый уровень
                     rectangle1.Height = 28;
                     rectangle1.Width = 233;

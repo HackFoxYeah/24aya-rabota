@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_24ayaRabota"
         mc:Ignorable="d"
-        Title="Игра" Height="600" Width="800" ResizeMode="CanMinimize" KeyDown="Window_KeyDown" Initialized="Window_Initialized">
+        Title="Игра" Height="600" Width="800" ResizeMode="CanMinimize" KeyDown="Window_KeyDown" Initialized="Window_Initialized" Icon="Resources/meteor.png">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
                     <DropShadowEffect BlurRadius="0" Color="White" ShadowDepth="2"/>
                 </TextBox.Effect>
             </TextBox>
-            <TextBox x:Name="ScoreTB" IsReadOnly="True" Height="20" Canvas.Left="10" TextWrapping="Wrap" Text="Score: 0" Canvas.Top="88" Width="51">
+            <TextBox x:Name="ScoreTB" IsReadOnly="True" Height="20" Canvas.Left="10" TextWrapping="Wrap" Text="Score: 0" Canvas.Top="88" Width="51" Focusable="False" AllowDrop="False" IsTabStop="False">
                 <TextBox.Effect>
                     <DropShadowEffect Color="White" BlurRadius="0" ShadowDepth="2"/>
                 </TextBox.Effect>
