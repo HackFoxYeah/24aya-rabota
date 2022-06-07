@@ -11,7 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="canvas1" HorizontalAlignment="Left" Height="621" VerticalAlignment="Top" Width="797" Margin="-2,0,-1,-50">
+        <Canvas x:Name="canvas1" HorizontalAlignment="Center" Height="621" VerticalAlignment="Top" Width="800">
             <Canvas.Background>
                 <ImageBrush ImageSource="Resources/planet.jpg"/>
             </Canvas.Background>
