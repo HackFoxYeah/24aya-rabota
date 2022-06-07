@@ -22,12 +22,15 @@ namespace _24ayaRabota
 
         DispatcherTimer timer;
 
-        double runSpeed = 5;
+        double runSpeed = 5,
+               gravity = 1;
 
         int level;
 
         Rect meteorCoordinates,
-             planetCoordinates;        
+             planetCoordinates,
+             rect1, rect2, rect3,
+             rect4, rect5, rect6;
 
         Ellipse meteor = new Ellipse()
         {
@@ -39,28 +42,28 @@ namespace _24ayaRabota
         Rectangle planet = new Rectangle()
         {
             Height = 110,
-            Width = 815            
+            Width = 815
         };
 
         Rectangle rectangle1 = new Rectangle()
-        {            
+        {
             Fill = Brushes.Red
         };
 
         Rectangle rectangle2 = new Rectangle()
-        {            
+        {
             Fill = Brushes.Red
         };
 
         Rectangle rectangle3 = new Rectangle()
-        {            
+        {
             Fill = Brushes.Red
         };
 
         Rectangle rectangle4 = new Rectangle()
         {
             Fill = Brushes.Red
-        };       
+        };
 
         private void Window_Initialized(object sender, EventArgs e)
         {
@@ -78,22 +81,33 @@ namespace _24ayaRabota
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (meteorCoordinates.IntersectsWith(planetCoordinates) && LevelTB.IsEnabled == false)
-            {                
-                MessageBox.Show("Victory"); 
+            meteorCoordinates.Y += gravity;
+            Canvas.SetTop(meteor, meteorCoordinates.Y);
+
+            if ((meteorCoordinates.IntersectsWith(planetCoordinates)) && LevelTB.IsEnabled == false)
+            {
+                MessageBox.Show("Victory");
                 Close();
+            }
+            else
+            {
+                if (meteorCoordinates.IntersectsWith(rect1) || meteorCoordinates.IntersectsWith(rect2))
+                {
+                    MessageBox.Show("You Lose");
+                    Close();
+                }
             }
         }
 
         private void StartGame()
-        {       
+        {
             level = Convert.ToInt32(LevelTB.Text);
 
             LevelTB.IsEnabled = false;
 
             canvas1.Children.Remove(meteor);
             canvas1.Children.Remove(planet);
-            
+
             meteorCoordinates = new Rect(400, 20, meteor.Width, meteor.Width);
             planetCoordinates = new Rect(-5, 510, planet.Width, planet.Width);
 
@@ -112,8 +126,12 @@ namespace _24ayaRabota
                     rectangle1.Height = 28;
                     rectangle1.Width = 233;
 
+                    rect1 = new Rect(0, 270, rectangle1.Width, rectangle1.Height);
+
                     rectangle2.Height = 28;
                     rectangle2.Width = 466;
+
+                    rect2 = new Rect(331, 270, rectangle2.Width, rectangle2.Height);
 
                     Canvas.SetLeft(rectangle1, 0);
                     Canvas.SetTop(rectangle1, 270);
