@@ -60,22 +60,7 @@ namespace _24ayaRabota
         Rectangle rectangle4 = new Rectangle()
         {
             Fill = Brushes.Red
-        };
-
-        Rectangle rectangle5 = new Rectangle()
-        {
-            Fill = Brushes.Red
-        };
-
-        Rectangle rectangle6 = new Rectangle()
-        {
-            Fill = Brushes.Red
-        };
-
-        Rectangle rectangle7 = new Rectangle()
-        {
-            Fill = Brushes.Red
-        };
+        };       
 
         private void Window_Initialized(object sender, EventArgs e)
         {
@@ -93,8 +78,7 @@ namespace _24ayaRabota
         {
             if (meteorCoordinates.Y > planetCoordinates.Y)
             {                
-                MessageBox.Show("Victory");              
-
+                MessageBox.Show("Victory"); 
                 Close();
             }
         }
