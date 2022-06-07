@@ -191,7 +191,7 @@ namespace _24ayaRabota
                     Canvas.SetLeft(rectangle1, 0);
                     Canvas.SetTop(rectangle1, 170);
 
-                    Canvas.SetLeft(rectangle2, 356);
+                    Canvas.SetLeft(rectangle2           , 356);
                     Canvas.SetTop(rectangle2, 313);
 
                     Canvas.SetLeft(rectangle3, 0);
