@@ -49,27 +49,27 @@ namespace _24ayaRabota
 
         Rectangle rectangle1 = new Rectangle()
         {
-            Fill = Brushes.Red
+            Fill = Brushes.Brown
         };
 
         Rectangle rectangle2 = new Rectangle()
         {
-            Fill = Brushes.Red
+            Fill = Brushes.Brown
         };
 
         Rectangle rectangle3 = new Rectangle()
         {
-            Fill = Brushes.Red
+            Fill = Brushes.Brown
         };
 
         Rectangle rectangle4 = new Rectangle()
         {
-            Fill = Brushes.Red
+            Fill = Brushes.Brown
         };
 
         Rectangle rectangle5 = new Rectangle()
         {
-            Fill = Brushes.Red
+            Fill = Brushes.Brown
         };
 
         private void Window_Initialized(object sender, EventArgs e)
@@ -92,12 +92,12 @@ namespace _24ayaRabota
             if (meteorCoordinates.IntersectsWith(planetCoordinates) && LevelTB.IsEnabled == false)
             {
                 score++;
-                ScoreTB.Text = $"Score: {score}";
+                ScoreTB.Text = $"Счёт: {score}";
 
                 LevelTB.IsEnabled = true;
                 startBTN.IsEnabled = true;
 
-                MessageBox.Show("Victory");
+                MessageBox.Show("Победа!");
                 LevelTB.Focus();
                 timer.Stop();
             }
@@ -105,13 +105,14 @@ namespace _24ayaRabota
             {
                 if (meteorCoordinates.IntersectsWith(rect1) || meteorCoordinates.IntersectsWith(rect2) || meteorCoordinates.IntersectsWith(rect3) || meteorCoordinates.IntersectsWith(rect4) || meteorCoordinates.IntersectsWith(rect5))
                 {
+                    meteor.Fill = Brushes.White;
                     score = 0;
-                    ScoreTB.Text = $"Score: {score}";
+                    ScoreTB.Text = $"Счёт: {score}";
 
                     LevelTB.IsEnabled = true;
                     startBTN.IsEnabled = true;
 
-                    MessageBox.Show("You Lose");
+                    MessageBox.Show("Поражение");
                     LevelTB.Focus();
                     timer.Stop();
                 }
@@ -120,6 +121,8 @@ namespace _24ayaRabota
 
         private void StartGame()
         {
+            meteor.Fill = Brushes.Red;
+
             timer.Start();
 
             try
@@ -191,7 +194,7 @@ namespace _24ayaRabota
                     Canvas.SetLeft(rectangle1, 0);
                     Canvas.SetTop(rectangle1, 170);
 
-                    Canvas.SetLeft(rectangle2           , 356);
+                    Canvas.SetLeft(rectangle2, 356);
                     Canvas.SetTop(rectangle2, 313);
 
                     Canvas.SetLeft(rectangle3, 0);
@@ -199,7 +202,7 @@ namespace _24ayaRabota
 
                     rect1 = new Rect(0, 170, rectangle1.Width, rectangle1.Height);
 
-                    rect2 = new Rect(356, 313, rectangle2.Width, rectangle2.Height);
+                    rect2 = new Rect(359, 313, rectangle2.Width, rectangle2.Height);
 
                     rect3 = new Rect(0, 465, rectangle3.Width, rectangle3.Height);
 
@@ -270,33 +273,13 @@ namespace _24ayaRabota
             {
                 meteorCoordinates.X += runSpeed;
                 Canvas.SetLeft(meteor, meteorCoordinates.X);
-            }
-
-            if (e.Key == Key.Up) //движение вверх
-            {
-                meteorCoordinates.Y -= runSpeed;
-                Canvas.SetTop(meteor, meteorCoordinates.Y);
-            }
+            }            
 
             if (e.Key == Key.Down) //движение вниз
             {
                 meteorCoordinates.Y += runSpeed;
                 Canvas.SetTop(meteor, meteorCoordinates.Y);
-            }
-
-            if (e.Key == Key.Left && e.Key == Key.Up) //движение влево-вверх
-            {
-                meteorCoordinates.Y -= runSpeed;
-                meteorCoordinates.X -= runSpeed;
-                Canvas.SetTop(meteor, meteorCoordinates.Y);
-            }
-
-            if (e.Key == Key.Right && e.Key == Key.Up) //движение вправо-вверх
-            {
-                meteorCoordinates.Y -= runSpeed;
-                meteorCoordinates.X -= runSpeed;
-                Canvas.SetTop(meteor, meteorCoordinates.Y);
-            }
+            }            
 
             if (e.Key == Key.Right && e.Key == Key.Down) //движение вправо-вниз
             {
