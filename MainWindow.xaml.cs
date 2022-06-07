@@ -64,6 +64,8 @@ namespace _24ayaRabota
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            LevelTB.Focus();
+
             timer = new DispatcherTimer()
             {
                 Interval = new TimeSpan(0, 0, 0, 0, 10)
@@ -76,7 +78,7 @@ namespace _24ayaRabota
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (meteorCoordinates.Y > planetCoordinates.Y)
+            if (meteorCoordinates.IntersectsWith(planetCoordinates) && LevelTB.IsEnabled == false)
             {                
                 MessageBox.Show("Victory"); 
                 Close();
@@ -84,17 +86,16 @@ namespace _24ayaRabota
         }
 
         private void StartGame()
-        {
+        {       
             level = Convert.ToInt32(LevelTB.Text);
+
+            LevelTB.IsEnabled = false;
 
             canvas1.Children.Remove(meteor);
             canvas1.Children.Remove(planet);
-
-            meteorCoordinates.X = 400;
-            meteorCoordinates.Y = 20;
-
-            planetCoordinates.X = -5;
-            planetCoordinates.Y = 475;
+            
+            meteorCoordinates = new Rect(400, 20, meteor.Width, meteor.Width);
+            planetCoordinates = new Rect(-5, 510, planet.Width, planet.Width);
 
             Canvas.SetLeft(meteor, meteorCoordinates.X);
             Canvas.SetTop(meteor, meteorCoordinates.Y);
